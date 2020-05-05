@@ -1,0 +1,656 @@
+{
+  "id" : "com-snaplogic-snaps-marketoread_1-0001",
+  "type" : "object",
+  "description" : "A schema for a snap",
+  "description" : "The common schema for snaps.",
+  "properties" : {
+    "class_id" : {
+      "description" : "",
+      "type" : "string",
+      "pattern" : "^[a-z]+-[^_]*$",
+      "required" : true
+    },
+    "class_fqid" : {
+      "description" : "",
+      "type" : "string",
+      "pattern" : "^[a-z]+-[^_]*_[0-9]+-[a-zA-Z0-9]*",
+      "required" : true
+    },
+    "class_version" : {
+      "description" : "snap version",
+      "type" : "number",
+      "required" : true,
+      "minimum" : 1,
+      "default" : 2
+    },
+    "class_build_tag" : {
+      "description" : "snap build tag",
+      "type" : "string",
+      "required" : true,
+      "default" : "SNAPSHOT"
+    },
+    "schema_version" : {
+      "description" : "version of snap schema",
+      "type" : "number",
+      "required" : false,
+      "minimum" : 2,
+      "default" : 2
+    },
+    "client_id" : {
+      "type" : "string"
+    },
+    "instance_id" : {
+      "type" : "string",
+      "pattern" : "^x[0-9]+|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+      "required" : true,
+      "default" : "00000000-0000-0000-0000-000000000000"
+    },
+    "instance_fqid" : {
+      "type" : "string",
+      "pattern" : "^x[0-9]+_[0-9]+|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}_[0-9]+$",
+      "required" : true,
+      "default" : "00000000-0000-0000-0000-000000000000_1"
+    },
+    "instance_version" : {
+      "type" : "number",
+      "required" : true,
+      "minimum" : 1,
+      "default" : 1
+    },
+    "class_map" : {
+      "description" : "Stores all the immutable definitions.",
+      "extends" : {
+        "$ref" : "com-snaplogic-snap_2#propertycategories"
+      },
+      "properties" : {
+        "account" : {
+          "required" : true,
+          "properties" : {
+            "account_ref" : {
+              "required" : true,
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#propertyextensions"
+              },
+              "properties" : {
+                "ref_id" : {
+                  "required" : true,
+                  "extends" : {
+                    "$ref" : "com-snaplogic-snap_2#propertyextensions"
+                  }
+                },
+                "ref_class_id" : {
+                  "required" : true,
+                  "extends" : {
+                    "$ref" : "com-snaplogic-snap_2#propertyextensions"
+                  }
+                },
+                "label" : {
+                  "required" : true,
+                  "extends" : {
+                    "$ref" : "com-snaplogic-snap_2#propertyextensions"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "settings" : {
+          "properties" : {
+            "execution_mode" : {
+              "required" : true,
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#propertyextensions"
+              }
+            },
+            "Object" : {
+              "required" : true,
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#propertyextensions"
+              }
+            },
+            "Operation" : {
+              "required" : true,
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#propertyextensions"
+              }
+            },
+            "Path parameters" : {
+              "required" : true,
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#propertyextensions"
+              },
+              "properties" : {
+                "header" : {
+                  "required" : true,
+                  "type" : "object",
+                  "properties" : {
+                    "Path parameter" : {
+                      "required" : true,
+                      "extends" : {
+                        "$ref" : "com-snaplogic-snap_2#propertyextensions"
+                      }
+                    },
+                    "Path value" : {
+                      "required" : true,
+                      "extends" : {
+                        "$ref" : "com-snaplogic-snap_2#propertyextensions"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "property_map" : {
+      "extends" : {
+        "$ref" : "com-snaplogic-snap_2#instancecategories"
+      },
+      "required" : true,
+      "properties" : {
+        "account" : {
+          "required" : true,
+          "properties" : {
+            "account_ref" : {
+              "type" : "object",
+              "properties" : {
+                "value" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "ref_id" : {
+                      "extends" : {
+                        "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+                      },
+                      "properties" : {
+                        "value" : {
+                          "required" : true,
+                          "format" : "",
+                          "type" : "string"
+                        }
+                      },
+                      "required" : true
+                    },
+                    "ref_class_id" : {
+                      "extends" : {
+                        "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+                      },
+                      "properties" : {
+                        "value" : {
+                          "enum" : [ "com-snaplogic-snaps-marketoaccount" ],
+                          "required" : true,
+                          "format" : "",
+                          "type" : "string"
+                        }
+                      },
+                      "required" : true
+                    },
+                    "label" : {
+                      "extends" : {
+                        "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+                      },
+                      "properties" : {
+                        "value" : {
+                          "required" : true,
+                          "format" : "",
+                          "type" : "string"
+                        }
+                      },
+                      "required" : true
+                    }
+                  },
+                  "required" : true
+                }
+              },
+              "required" : true
+            }
+          }
+        },
+        "settings" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "execution_mode" : {
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+              },
+              "properties" : {
+                "value" : {
+                  "default" : "Validate & Execute",
+                  "enum" : [ "Validate & Execute", "Execute only", "Disabled" ],
+                  "format" : "",
+                  "type" : "string"
+                }
+              }
+            },
+            "Object" : {
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+              },
+              "properties" : {
+                "value" : {
+                  "expression" : true,
+                  "suggestable" : true,
+                  "format" : "",
+                  "type" : "string"
+                }
+              }
+            },
+            "Operation" : {
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+              },
+              "properties" : {
+                "value" : {
+                  "expression" : true,
+                  "suggestable" : true,
+                  "format" : "",
+                  "type" : "string"
+                }
+              }
+            },
+            "Path parameters" : {
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+              },
+              "properties" : {
+                "value" : {
+                  "type" : "array",
+                  "items" : [ {
+                    "properties" : {
+                      "Path parameter" : {
+                        "extends" : {
+                          "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+                        },
+                        "properties" : {
+                          "value" : {
+                            "expression" : true,
+                            "suggestable" : true,
+                            "format" : "",
+                            "type" : "string"
+                          }
+                        }
+                      },
+                      "Path value" : {
+                        "extends" : {
+                          "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+                        },
+                        "properties" : {
+                          "value" : {
+                            "expression" : true,
+                            "required" : true,
+                            "format" : "",
+                            "type" : "string"
+                          }
+                        },
+                        "required" : true
+                      }
+                    }
+                  } ],
+                  "format" : ""
+                }
+              }
+            }
+          }
+        },
+        "error" : {
+          "properties" : {
+            "error0" : {
+              "required" : true,
+              "additionalProperties" : false,
+              "properties" : {
+                "view_type" : {
+                  "extends" : {
+                    "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+                  },
+                  "properties" : {
+                    "value" : {
+                      "default" : "document",
+                      "format" : "",
+                      "type" : "string"
+                    }
+                  }
+                },
+                "label" : {
+                  "extends" : {
+                    "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+                  },
+                  "properties" : {
+                    "value" : {
+                      "default" : "error0",
+                      "format" : "",
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            },
+            "error_behavior" : {
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+              },
+              "properties" : {
+                "value" : {
+                  "default" : "fail",
+                  "enum" : [ "fail", "continue", "ignore" ],
+                  "format" : "",
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "additionalProperties" : false
+        }
+      }
+    }
+  },
+  "class_map" : {
+    "property_category_list" : [ "settings", "input", "error", "output", "account", "info" ]
+  },
+  "property_map" : {
+    "view_serial" : 100,
+    "settings" : { }
+  },
+  "description" : "The common schema for snaps.",
+  "class_map" : {
+    "property_category_list" : [ "settings", "input", "error", "output", "account", "info" ],
+    "info" : {
+      "title" : {
+        "ui_row_count" : 1,
+        "value" : "Marketo Read",
+        "info_text" : "Class title shown for the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "Title",
+        "priority_index" : 30,
+        "display_type" : "visible",
+        "anchor" : false
+      },
+      "purpose" : {
+        "ui_row_count" : 3,
+        "value" : "Read Marketo asset information",
+        "info_text" : "The description of the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "Purpose",
+        "priority_index" : 40,
+        "display_type" : "visible",
+        "anchor" : false,
+        "doc_uri" : "http://yourdocslinkhere.com"
+      },
+      "snap_pack_version" : {
+        "ui_row_count" : 1,
+        "value" : 1,
+        "info_text" : "The version of the Snap pack to which the Snap belongs.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack version",
+        "priority_index" : 70,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_pack_build_number" : {
+        "ui_row_count" : 1,
+        "value" : "0001",
+        "info_text" : "The build number of the Snap pack to which the Snap belongs.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack build-number",
+        "priority_index" : 60,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_pack_fqid" : {
+        "ui_row_count" : 1,
+        "value" : "marketo-snap-1-0001.zip",
+        "info_text" : "The fully qualified id of Snap pack to which the Snap belongs.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack fqid",
+        "priority_index" : 65,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_pack_url" : {
+        "ui_row_count" : 1,
+        "value" : "$SNAP_HOME/marketo/target/marketo-build",
+        "info_text" : "The URL of the snap pack, it can be relative.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack URL",
+        "priority_index" : 68,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_pack_name" : {
+        "ui_row_count" : 1,
+        "value" : "marketo",
+        "info_text" : "The name of the Snap pack to which the Snap belongs.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack name",
+        "priority_index" : 66,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "sdk_version" : {
+        "ui_row_count" : 1,
+        "value" : 4.0,
+        "info_text" : "The SDK version of the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "SDK version",
+        "priority_index" : 100,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "cc_version" : {
+        "ui_row_count" : 1,
+        "value" : 4.0,
+        "info_text" : "The container version of the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "Container version",
+        "priority_index" : 90,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_class_name" : {
+        "ui_row_count" : 1,
+        "value" : "com.snaplogic.snaps.MarketoRead",
+        "info_text" : "The name of the Snap class.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap class name",
+        "priority_index" : 69,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "implemented_runtimes" : {
+        "ui_row_count" : 1,
+        "value" : [ "standard" ],
+        "info_text" : "Compatible runtimes",
+        "sensitivity_level" : "public",
+        "label_text" : "Compatible runtimes",
+        "priority_index" : 15,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_author" : {
+        "ui_row_count" : 2,
+        "value" : "SnapLogic",
+        "info_text" : "Author of the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "Developer",
+        "priority_index" : 50,
+        "display_type" : "visible",
+        "anchor" : false
+      },
+      "class_fqid" : {
+        "ui_row_count" : 2,
+        "value" : "com-snaplogic-snaps-marketoread_1-0001",
+        "info_text" : "The unique identifier of the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "Class FQID",
+        "priority_index" : 80,
+        "display_type" : "visible",
+        "anchor" : false
+      },
+      "label" : {
+        "ui_row_count" : 1,
+        "info_text" : "User provided label for instance",
+        "sensitivity_level" : "public",
+        "label_text" : "Label",
+        "priority_index" : 10,
+        "display_type" : "visible",
+        "anchor" : false
+      },
+      "notes" : {
+        "ui_row_count" : 8,
+        "info_text" : "User provided long notes for Snap instance",
+        "sensitivity_level" : "public",
+        "label_text" : "Notes",
+        "priority_index" : 20,
+        "display_type" : "visible",
+        "anchor" : false
+      }
+    },
+    "input" : {
+      "view_map" : {
+        "document" : {
+          "min_views" : 1,
+          "max_views" : 1
+        }
+      }
+    },
+    "output" : {
+      "view_map" : {
+        "document" : {
+          "min_views" : 1,
+          "max_views" : 1
+        }
+      }
+    },
+    "error" : {
+      "view_map" : {
+        "document" : {
+          "min_views" : 1,
+          "max_views" : 1
+        }
+      },
+      "error_behavior" : {
+        "ui_row_count" : 1,
+        "info_text" : "Determines if the snap should fail, continue (write to error view) or ignore errors",
+        "sensitivity_level" : "public",
+        "label_text" : "Error behavior",
+        "priority_index" : 40,
+        "display_type" : "visible",
+        "anchor" : false
+      }
+    },
+    "category" : "read",
+    "account" : {
+      "account_ref" : {
+        "info_text" : "Defines the account reference",
+        "reference_type" : "account",
+        "label_text" : "Account reference",
+        "display_type" : "reference",
+        "anchor" : false,
+        "ref_id" : {
+          "info_text" : "The id of the reference.",
+          "label_text" : "Reference Id",
+          "priority_index" : 20,
+          "anchor" : false
+        },
+        "ref_class_id" : {
+          "info_text" : "The class id of the reference.",
+          "label_text" : "Reference Class Id",
+          "priority_index" : 30,
+          "anchor" : false
+        },
+        "label" : {
+          "info_text" : "Select an account for the snap.",
+          "label_text" : "Label",
+          "priority_index" : 10,
+          "anchor" : false
+        }
+      }
+    },
+    "settings" : {
+      "execution_mode" : {
+        "info_text" : "Controls whether or not a snap executes",
+        "label_text" : "Snap Execution",
+        "priority_index" : 1010,
+        "anchor" : false
+      },
+      "Object" : {
+        "info_text" : "The object",
+        "label_text" : "Object",
+        "priority_index" : 10,
+        "display_type" : "suggestable",
+        "anchor" : false
+      },
+      "Operation" : {
+        "info_text" : "The operation",
+        "label_text" : "Operation",
+        "priority_index" : 20,
+        "display_type" : "suggestable",
+        "anchor" : false
+      },
+      "Path parameters" : {
+        "info_text" : "Path parameters",
+        "label_text" : "Path parameters",
+        "priority_index" : 30,
+        "anchor" : false,
+        "header" : {
+          "Path parameter" : {
+            "info_text" : "Path parameter",
+            "label_text" : "Path parameter",
+            "priority_index" : 10,
+            "display_type" : "suggestable",
+            "anchor" : false
+          },
+          "Path value" : {
+            "info_text" : "Path value",
+            "label_text" : "Path value",
+            "priority_index" : 20,
+            "anchor" : false
+          }
+        }
+      }
+    }
+  },
+  "property_map" : {
+    "view_serial" : 100,
+    "settings" : {
+      "execution_mode" : {
+        "value" : "Validate & Execute"
+      }
+    },
+    "account" : { },
+    "input" : {
+      "input0" : {
+        "view_type" : {
+          "value" : "document"
+        },
+        "label" : {
+          "value" : "input0"
+        }
+      }
+    },
+    "output" : {
+      "output0" : {
+        "view_type" : {
+          "value" : "document"
+        },
+        "label" : {
+          "value" : "output0"
+        }
+      }
+    },
+    "error" : {
+      "error0" : {
+        "view_type" : {
+          "value" : "document"
+        },
+        "label" : {
+          "value" : "error0"
+        }
+      },
+      "error_behavior" : {
+        "value" : "fail"
+      }
+    }
+  }
+}

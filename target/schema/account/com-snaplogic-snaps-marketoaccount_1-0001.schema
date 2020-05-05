@@ -1,0 +1,274 @@
+{
+  "id" : "com-snaplogic-snaps-marketoaccount_1-0001",
+  "type" : "object",
+  "description" : "A schema for a snap",
+  "description" : "The common schema for accounts.",
+  "properties" : {
+    "class_id" : {
+      "description" : "",
+      "type" : "string",
+      "pattern" : "^[a-z]+-[^_]*$",
+      "required" : true
+    },
+    "class_fqid" : {
+      "description" : "",
+      "type" : "string",
+      "pattern" : "^[a-z]+-[^_]*_[0-9]+-[a-zA-Z0-9]*",
+      "required" : true
+    },
+    "class_version" : {
+      "description" : "snap version",
+      "type" : "number",
+      "required" : true,
+      "minimum" : 1,
+      "default" : 2
+    },
+    "class_build_tag" : {
+      "description" : "snap build tag",
+      "type" : "string",
+      "required" : true,
+      "default" : "SNAPSHOT"
+    },
+    "schema_version" : {
+      "description" : "version of snap account schema",
+      "type" : "number",
+      "required" : false,
+      "minimum" : 2,
+      "default" : 2
+    },
+    "instance_id" : {
+      "type" : "string",
+      "pattern" : "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+      "required" : true,
+      "default" : "00000000-0000-0000-0000-000000000000"
+    },
+    "instance_fqid" : {
+      "type" : "string",
+      "pattern" : "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}_[0-9]+$",
+      "required" : true,
+      "default" : "00000000-0000-0000-0000-000000000000_1"
+    },
+    "instance_version" : {
+      "type" : "number",
+      "required" : true,
+      "minimum" : 1,
+      "default" : 1
+    },
+    "class_map" : {
+      "description" : "Stores all the immutable definitions.",
+      "extends" : {
+        "$ref" : "com-snaplogic-snap_2#accountpropertycategories"
+      },
+      "properties" : {
+        "settings" : {
+          "properties" : {
+            "MunchkinId" : {
+              "required" : true,
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#propertyextensions"
+              }
+            },
+            "AccessToken" : {
+              "required" : true,
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#propertyextensions"
+              }
+            }
+          }
+        }
+      }
+    },
+    "property_map" : {
+      "extends" : {
+        "$ref" : "com-snaplogic-snap_2#accountinstancecategories"
+      },
+      "required" : true,
+      "properties" : {
+        "settings" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "MunchkinId" : {
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+              },
+              "properties" : {
+                "value" : {
+                  "required" : true,
+                  "format" : "",
+                  "type" : "string"
+                }
+              },
+              "required" : true
+            },
+            "AccessToken" : {
+              "extends" : {
+                "$ref" : "com-snaplogic-snap_2#instancepropertyextensions"
+              },
+              "properties" : {
+                "value" : {
+                  "required" : true,
+                  "format" : "",
+                  "type" : "string"
+                }
+              },
+              "required" : true
+            }
+          },
+          "required" : true
+        }
+      }
+    }
+  },
+  "class_map" : {
+    "property_category_list" : [ "info", "settings" ]
+  },
+  "property_map" : {
+    "view_serial" : 100
+  },
+  "description" : "The common schema for accounts.",
+  "class_map" : {
+    "property_category_list" : [ "info", "settings" ],
+    "info" : {
+      "title" : {
+        "ui_row_count" : 1,
+        "value" : "Marketo Account",
+        "info_text" : "Class title shown for the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "Title",
+        "priority_index" : 30,
+        "display_type" : "visible",
+        "anchor" : false
+      },
+      "snap_pack_version" : {
+        "ui_row_count" : 1,
+        "value" : 1,
+        "info_text" : "The version of the Snap pack to which the Snap belongs.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack version",
+        "priority_index" : 70,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_pack_build_number" : {
+        "ui_row_count" : 1,
+        "value" : "0001",
+        "info_text" : "The build number of the Snap pack to which the Snap belongs.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack build-number",
+        "priority_index" : 60,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_pack_fqid" : {
+        "ui_row_count" : 1,
+        "value" : "marketo-snap-1-0001.zip",
+        "info_text" : "The fully qualified id of Snap pack to which the Snap belongs.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack fqid",
+        "priority_index" : 65,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_pack_url" : {
+        "ui_row_count" : 1,
+        "value" : "$SNAP_HOME/marketo/target/marketo-build",
+        "info_text" : "The URL of the snap pack, it can be relative.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack URL",
+        "priority_index" : 68,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_pack_name" : {
+        "ui_row_count" : 1,
+        "value" : "marketo",
+        "info_text" : "The name of the Snap pack to which the Snap belongs.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap-pack name",
+        "priority_index" : 66,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "sdk_version" : {
+        "ui_row_count" : 1,
+        "value" : 4.0,
+        "info_text" : "The SDK version of the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "SDK version",
+        "priority_index" : 100,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "cc_version" : {
+        "ui_row_count" : 1,
+        "value" : 4.0,
+        "info_text" : "The container version of the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "Container version",
+        "priority_index" : 90,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "snap_class_name" : {
+        "ui_row_count" : 1,
+        "value" : "com.snaplogic.snaps.MarketoAccount",
+        "info_text" : "The name of the Snap class.",
+        "sensitivity_level" : "public",
+        "label_text" : "Snap class name",
+        "priority_index" : 69,
+        "display_type" : "hidden",
+        "anchor" : false
+      },
+      "class_fqid" : {
+        "ui_row_count" : 2,
+        "value" : "com-snaplogic-snaps-marketoaccount_1-0001",
+        "info_text" : "The unique identifier of the Snap",
+        "sensitivity_level" : "public",
+        "label_text" : "Class FQID",
+        "priority_index" : 80,
+        "display_type" : "visible",
+        "anchor" : false
+      },
+      "label" : {
+        "ui_row_count" : 1,
+        "info_text" : "User provided label for instance",
+        "sensitivity_level" : "public",
+        "label_text" : "Label",
+        "priority_index" : 10,
+        "display_type" : "visible",
+        "anchor" : false
+      },
+      "notes" : {
+        "ui_row_count" : 8,
+        "info_text" : "User provided long notes for Account instance",
+        "sensitivity_level" : "public",
+        "label_text" : "Notes",
+        "priority_index" : 20,
+        "display_type" : "visible",
+        "anchor" : false
+      }
+    },
+    "category" : "custom",
+    "is_validatable" : true,
+    "settings" : {
+      "MunchkinId" : {
+        "info_text" : "Your Marketo Munchin ID",
+        "sensitivity_level" : "medium",
+        "label_text" : "Munchin ID",
+        "priority_index" : 10,
+        "anchor" : false
+      },
+      "AccessToken" : {
+        "info_text" : "Your Marketo Access Token",
+        "sensitivity_level" : "high",
+        "label_text" : "Access Token",
+        "priority_index" : 20,
+        "display_type" : "password",
+        "anchor" : false
+      }
+    }
+  },
+  "property_map" : {
+    "view_serial" : 100
+  }
+}
